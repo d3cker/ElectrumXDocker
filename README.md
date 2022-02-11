@@ -1,5 +1,7 @@
-# ElectrumXDocker 
-Dockerfile for ElectrumX server.
+# ElectrumX Docker
+Dockerfile for ElectrumX server. This is developed for *spesmilo
+/electrumx* which supports Bitcoin network. 
+Please visit: https://github.com/spesmilo/electrumx for more information.
 
 ## Cause and purpose
 
@@ -42,7 +44,7 @@ The following example will be dedicated for Linux systems and Bitcoin network.
 It's a little bit out of the scope but decied to give some informations.
 Before starting ElectrumX server you need any coin node to make it operational.
 Node should be fully synchronized with the blockchain. Here is the important 
-part. *Before you start the node set `txindex=1` in configuration file!*. 
+part. **Before you start the node set `txindex=1` in configuration file!**. 
 I missed that part which resulted in reindexing the whole blockchain. Long story 
 short, it took more or less the same amount of time to reindex as syncing from 
 the scratch. So to save some time pay attention to this configuration variable.
