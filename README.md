@@ -1,18 +1,18 @@
 # ElectrumX Docker
-Dockerfile for ElectrumX server. This is developed for *spesmilo
-/electrumx* which supports Bitcoin network. 
+Dockerfile for ElectrumX server. This is developed for 
+*spesmilo/electrumx* fork which supports Bitcoin network. 
 Please visit: https://github.com/spesmilo/electrumx for more information.
 
 ## Cause and purpose
 
-Idea behind this container popped up when I decided to run ElectrumX on my 
-remote Raspberry PI. Unfortunately it had (and still has) Python 3.7 
+Idea behind this container popped up when there was a need to run ElectrumX
+on remote Raspberry PI. Unfortunately it had (and still has) Python 3.7 
 installed with a lot of extra packages. One way to go was to upgrade Python.
-It turns out it was not that straight forward because I had some software
-already running and making everything to work as expected after the upgrade 
-could be time consuming. Moving to Docker was my next thought. It was much 
-faster to develop containerized solution than upgrading existing OS. This 
-contianer was build and run with success on: 
+It turns out it was not that straight forward because there were some 
+applications already running. Making everything to work as expected after 
+the upgrade could be time consuming. Moving to Docker was a next thought. It 
+was much faster to develop containerized solution than upgrading existing OS. 
+This contianer was build and run with success on: 
 - Raspberry Pi 4 32bit Raspbian OS,Docker version 20.10.12
 - Raspberry Pi Compute Module 4 64bit Raspbian OS,Docker version 20.10.12
 - x86_64 AMD powered machine running Ubuntu 20.04.2 LTS,Docker version 20.10.12
@@ -41,14 +41,15 @@ The following example will be dedicated for Linux systems and Bitcoin network.
 
 1) Bitcoin node.
 
-It's a little bit out of the scope but decied to give some informations.
-Before starting ElectrumX server you need any coin node to make it operational.
+It's a little bit out of the scope but still a very usefull tip. 
+Before starting ElectrumX server it's required to run some coin node.
 Node should be fully synchronized with the blockchain. Here is the important 
 part. **Before you start the node set `txindex=1` in configuration file!**. 
-I missed that part which resulted in reindexing the whole blockchain. Long story 
-short, it took more or less the same amount of time to reindex as syncing from 
-the scratch. So to save some time pay attention to this configuration variable.
-Also one should keep in mind that current Bitcoin blockchain weights ~500GB.
+During the development this part was missed which resulted in reindexing the 
+whole blockchain. Long story short, it took more or less the same amount of 
+time to reindex as syncing from the scratch. So, to save some time, attention
+should be paid to this configuration variable. Also one should keep in mind 
+that current Bitcoin blockchain weights ~500GB.
 
 2) ElectrumX host machine
 
@@ -104,11 +105,11 @@ patient and monitor the progress.
 Two ports should be opened by ElectrumX server 50001 and 8000. It's worth 
 to mention that container will expose those ports from the very beginning
 but they **won't be useful until synchronisation is finished**. To verify that
-ElectrumX is working configure your Electrum client to connect to:
+ElectrumX is working, Electrum client must be configured to connect to:
 ```
 address_of_electrumx_host:50001:t
 ```
-Please note `:t` at the end of the address. This will inform Electrum client 
+Please, note `:t` at the end of the address. This will inform Electrum client 
 to use plain text connection. For SSL please follow instructions from 
 *[HOWTO](https://github.com/spesmilo/electrumx/blob/master/docs/HOWTO.rst)*.
 
@@ -120,6 +121,6 @@ container was stopped with either `docker stop` or `docker kill`. Despite
 having clear message that flush was completed, synchrozation was pushed back
 during next start. The only way to shutdown ElectrumX properly is to `docker
 attach` and hit Ctrl+C. One should be careful during first initialization phase
-because it is possible to loose all the progress on unattended shutdown.
+because it is possible to lose all the progress on unattended shutdown.
 This issue is to be investigated in the future (hopefully).
 
