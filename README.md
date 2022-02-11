@@ -113,6 +113,17 @@ Please, note `:t` at the end of the address. This will inform Electrum client
 to use plain text connection. For SSL please follow instructions from 
 *[HOWTO](https://github.com/spesmilo/electrumx/blob/master/docs/HOWTO.rst)*.
 
+### Docker Hub
+
+Ready to use images were built with this repository and published to Docker
+Hub. 
+```
+$ docker pull d3cker/electrumx
+```
+Supported architectures:
+- arm
+- arm64
+- amd64
 
 ### Known issues
 
