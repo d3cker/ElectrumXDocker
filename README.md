@@ -66,7 +66,7 @@ $ sudo chown 1000:1000 /electrumdb
 Of course Docker daemon should be up and running and user should have 
 permissions to use it. 
 
-### Buildint the image
+### Building
 
 Clone the repository and execute `docker build` command:
 
@@ -77,7 +77,7 @@ $ docker build . -t electrumx
 
 ```
 
-### Starting the contianer
+### Running
 
 For ElectrumX configuration details, please visit its Github repository:
 https://github.com/spesmilo/electrumx/blob/master/docs/
