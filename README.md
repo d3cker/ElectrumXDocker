@@ -90,7 +90,7 @@ In this example ElectrumX will:
 ```
 $ docker run -d \
 -v /electrumdb:/electrumdb -p 50001:50001 -p 8000:8000 \
--e "DB_DIRECTORY=/electrum" \
+-e "DB_DIRECTORY=/electrumdb" \
 -e "DAEMON_URL=http://rpcuser:rpcpassword@192.168.0.69:8332/" \
 -e "COIN=Bitcoin" \
 -e "SERVICES=tcp://:50001,ws://:8000,rpc://" \
@@ -104,7 +104,7 @@ patient and monitor the progress.
 
 Two TCP ports should be opened by ElectrumX server: 50001 and 8000. It's worth
 to mention that container will expose those ports from the very beginning
-but they **won't be useful until synchronisation is finished**. To verify that
+but they **won't be useful until synchronization is finished**. To verify that
 ElectrumX is working, Electrum client must be configured to connect to:
 ```
 address_of_electrumx_host:50001:t
@@ -118,9 +118,15 @@ to use plain text connection. For SSL please follow instructions from
 
 It was observed that ElectrumX failed to flush synchronization data when 
 container was stopped with either `docker stop` or `docker kill`. Despite
-having clear message that flush was completed, synchrozation was pushed back
-during next start. The only way to shutdown ElectrumX properly is to `docker
-attach` and hit Ctrl+C. One should be careful during first initialization phase
-because it is possible to lose all the progress on unattended shutdown.
-This issue is to be investigated in the future (hopefully).
+having clear message (in case of stop command):
+```
+INFO:BlockProcessor:our height: 364,123 daemon: 722,787 UTXOs 5MB hist 5MB
+WARNING:Controller:received SIGTERM signal, initiating shutdown
+INFO:Controller:shutting down
+```
+synchrozation was pushed back during next start. The only way to shutdown 
+ElectrumX properly is to `docker attach` and hit Ctrl+C. One should be 
+careful during first initialization phase because it is possible to lose all 
+the progress on unattended shutdown.This issue is to be investigated in the 
+future (hopefully).
 
