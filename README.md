@@ -26,7 +26,7 @@ Machine with a Docker.
 - Source code is stored in /electrumx folder.
 - Commit `c5d1e802e7a7e98db36fbad79954b3a46b9e03f3` was chosen to be used.
 - _electrumx_ user and group are created with uid:gid = 1000:1000.
-- _electrumx_'s home folder is set to `/electrumx` and it's permisions are 
+- _electrumx_'s home folder set to `/electrumx` and its permisions are 
   read-only.
 - root priviledges are dropped and `electrumx_server` is executed as electrumx
   user.
@@ -50,7 +50,7 @@ Also one should keep in mind that current Bitcoin blockchain weights ~500GB.
 
 2) ElectrumX host machine
 
-ElectrumX in Docker requires some place to store it's database. For this 
+ElectrumX in Docker requires some place to store its database. For this 
 purpose volume should me mounted to the container. Since the container 
 runs as user with uid 1000 and gid 1000, the same ownership should be set 
 on a folder. For example:
@@ -76,7 +76,7 @@ $ docker build . -t electrumx
 
 ### Starting the contianer
 
-For ElectrumX configuration details, please visit it's Github repository:
+For ElectrumX configuration details, please visit its Github repository:
 https://github.com/spesmilo/electrumx/blob/master/docs/
 In this example ElectrumX will:
 - use `/electrumdb` mounted from host machine
