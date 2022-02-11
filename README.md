@@ -39,12 +39,12 @@ Machine with a Docker.
 
 The following example will be dedicated for Linux systems and Bitcoin network.
 
-1) Bitcoin node.
+1) Bitcoin node
 
 It's a little bit out of the scope but still a very usefull tip. 
 Before starting ElectrumX server it's required to run some coin node.
 Node should be fully synchronized with the blockchain. Here is the important 
-part. **Before you start the node set `txindex=1` in configuration file!**. 
+part. **Before starting the node, set up `txindex=1` in configuration file!**.
 During the development this part was missed which resulted in reindexing the 
 whole blockchain. Long story short, it took more or less the same amount of 
 time to reindex as syncing from the scratch. So, to save some time, attention
@@ -102,7 +102,7 @@ patient and monitor the progress.
 
 ### Testing
 
-Two ports should be opened by ElectrumX server 50001 and 8000. It's worth 
+Two TCP ports should be opened by ElectrumX server: 50001 and 8000. It's worth
 to mention that container will expose those ports from the very beginning
 but they **won't be useful until synchronisation is finished**. To verify that
 ElectrumX is working, Electrum client must be configured to connect to:
