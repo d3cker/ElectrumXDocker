@@ -54,7 +54,7 @@ that current Bitcoin blockchain weights ~500GB.
 2) ElectrumX host machine
 
 ElectrumX in Docker requires some place to store its database. For this 
-purpose volume should me mounted to the container. Since the container 
+purpose a volume should me mounted to the container. Since the container
 runs as user with uid 1000 and gid 1000, the same ownership should be set 
 on a folder. For example:
 
