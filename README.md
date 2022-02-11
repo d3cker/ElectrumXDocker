@@ -99,6 +99,20 @@ Once executed, it should take some time to sync with Bitcoin node. On old
 AMD FX(tm)-8120 Eight-Core Processor with 7200RPM HDD it took ~4 days. Be 
 patient and monitor the progress.
 
+### Testing
+
+Two ports should be opened by ElectrumX server 50001 and 8000. It's worth 
+to mention that container will expose those ports from the very beginning
+but they **won't be useful until synchronisation is finished**. To verify that
+ElectrumX is working configure your Electrum client to connect to:
+```
+address_of_electrumx_host:50001:t
+```
+Please note `:t` at the end of the address. This will inform Electrum client 
+to use plain text connection. For SSL please follow instructions from 
+*[HOWTO](https://github.com/spesmilo/electrumx/blob/master/docs/HOWTO.rst)*.
+
+
 ### Known issues
 
 It was observed that ElectrumX failed to flush synchronization data when 
